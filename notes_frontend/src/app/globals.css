@@ -1,13 +1,20 @@
 @import "tailwindcss";
 
+/* Minimal CSS variables for palette */
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary: #1976d2;
+  --secondary: #1565c0;
+  --accent: #ffb300;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -16,11 +23,36 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --primary: #90caf9;
+    --secondary: #1565c0; /* could use lighter for dark, optional */
+    --accent: #ffd740;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans, Arial, Helvetica, sans-serif);
 }
+
+.bg-primary { background: var(--primary) !important; }
+.bg-secondary { background: var(--secondary) !important; }
+.bg-accent { background: var(--accent) !important; }
+.text-primary { color: var(--primary) !important; }
+.text-secondary { color: var(--secondary) !important; }
+.text-accent { color: var(--accent) !important; }
+
+input:focus, textarea:focus, select:focus {
+  outline: 2px solid var(--primary);
+}
+
+::-webkit-scrollbar {
+  width: 8px; height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #ddd; border-radius: 4px;
+}
+/* 
+  Lightweight overrides for a modern, minimal UI,
+  enabled by palette
+*/
